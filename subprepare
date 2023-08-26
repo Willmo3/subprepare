@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 username=morri2wj
+name=$1
 
-cd "/cs/students/cs361/f23/kirkpams/submit/$username"
-echo `pwd`
+cd /cs/students/cs361/f23/kirkpams/submit/$username
+
+tarball="$name.tar.gz"
+if [[ ! -f "/cs/students/cs361/f23/kirkpams/src/$tarball" ]]; then
+    echo "Bad file: $tarball"
+    exit 1
+fi
