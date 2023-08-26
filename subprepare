@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+username=morri2wj
+
+cd "/cs/students/cs361/f23/kirkpams/submit/$username"
+echo `pwd`
