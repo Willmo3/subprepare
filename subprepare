@@ -3,10 +3,21 @@
 username=morri2wj
 name=$1
 
-cd /cs/students/cs361/f23/kirkpams/submit/$username
+class=cs361
+semester=f23
+prof=kirkpams
+rootdir=/cs/students/$class/$semester/$prof
 
-tarball="$name.tar.gz"
-if [[ ! -f "/cs/students/cs361/f23/kirkpams/src/$tarball" ]]; then
-    echo "Bad file: $tarball"
+if [[ ! -d $rootdir ]]; then
+    echo "Content root directory not found: $rootdir"
     exit 1
 fi
+
+tarpath=$rootdir/src/$name.tar.gz
+if [[ ! -f "$tarpath" ]]; then
+    echo "File not found: $tarpath"
+    exit 1
+fi
+
+cd /cs/students/cs361/f23/kirkpams/submit/$username
+
