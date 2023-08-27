@@ -35,6 +35,7 @@ fi
 subpath=$subroot/$name
 if [[ -d "$subpath" ]]; then
     echo "Submission directory $subpath already exists!"
+    echo "Exiting to prevent overwrite."
     exit 1
 fi
 
