@@ -47,5 +47,5 @@ if [[ ! -f "$tarpath" ]]; then
 fi
 
 cd $subroot
-pwd
+tar xvzf $tarpath
 
