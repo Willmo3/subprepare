@@ -11,7 +11,6 @@ prof=kirkpams
 rootdir=/cs/students/$class/$semester/$prof
 if [[ ! -d $rootdir ]]; then
     echo "Content root directory not found: $rootdir"
-    echo $usage
     exit 1
 fi
 
