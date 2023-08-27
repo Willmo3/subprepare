@@ -2,6 +2,7 @@
 
 username=morri2wj
 name=$1
+usage="Usage: subprepare (assignment name)"
 
 class=cs361
 semester=f23
@@ -10,12 +11,14 @@ rootdir=/cs/students/$class/$semester/$prof
 
 if [[ ! -d $rootdir ]]; then
     echo "Content root directory not found: $rootdir"
+    echo $usage
     exit 1
 fi
 
 tarpath=$rootdir/src/$name.tar.gz
 if [[ ! -f "$tarpath" ]]; then
     echo "File not found: $tarpath"
+    echo $usage
     exit 1
 fi
 
