@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 
-name=$1 # name of assignment, first arg
 usage="Usage: subprepare (assignment name)"
 
 username=morri2wj
 class=cs361
 semester=f23
 prof=kirkpams
+
+name=$1 # name of assignment, first arg
+if [[ $name = "" ]]; then
+    echo "Specify a lab/project name!"
+    echo $usage
+    exit 1
+fi
 
 rootdir=/cs/students/$class/$semester/$prof
 if [[ ! -d $rootdir ]]; then
@@ -20,6 +26,12 @@ if [[ ! -d "$subroot" ]]; then
     exit 1
 fi
 
+subpath=$subroot/$name
+if [[ -d "$subpath" ]]; then
+    echo "Submission directory $subpath already exists!"
+    exit 1
+fi
+
 tarpath=$rootdir/src/$name.tar.gz
 if [[ ! -f "$tarpath" ]]; then
     echo "File not found: $tarpath"
@@ -27,5 +39,6 @@ if [[ ! -f "$tarpath" ]]; then
     exit 1
 fi
 
-cd $ 
+cd $subroot
+pwd
 
