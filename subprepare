@@ -8,11 +8,17 @@ semester=f23
 prof=kirkpams
 
 name=$1 # name of assignment, first arg
-if [[ $name = "" ]]; then
+if [[ "$#" -eq 0 ]]; then
     echo "Specify a lab/project name!"
     echo $usage
     exit 1
 fi
+
+if [[ "$#" -gt 1 ]]; then
+    echo "Too many args!"
+    echo $usage
+    exit 1
+fi 
 
 rootdir=/cs/students/$class/$semester/$prof
 if [[ ! -d $rootdir ]]; then
