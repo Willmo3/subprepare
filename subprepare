@@ -14,9 +14,9 @@ if [[ ! -d $rootdir ]]; then
     exit 1
 fi
 
-submissiondir=$rootdir/submit/$username
-if [[ ! -d "$submissiondir" ]]; then
-    echo "Submission directory $submissiondir not found."
+subroot=$rootdir/submit/$username
+if [[ ! -d "$subroot" ]]; then
+    echo "Submission parent directory $subroot not found."
     exit 1
 fi
 
@@ -27,5 +27,5 @@ if [[ ! -f "$tarpath" ]]; then
     exit 1
 fi
 
-cd /cs/students/cs361/f23/kirkpams/submit/$username
+cd $ 
 
