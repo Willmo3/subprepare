@@ -41,8 +41,7 @@ if [[ ! -d "$subroot" ]]; then
     exit 1
 fi
 
-# Subpath var exists to ensure no overwrite
-# and to tell user where submission will be placed.
+# Subpath used to ensure no overwrite, initialize bare repo.
 subpath=$subroot/$name
 if [[ -d "$subpath" ]]; then
     echo "Submission directory $subpath already exists!"
@@ -53,7 +52,7 @@ fi
 # Confirm that the submission details are correct.
 echo "Submission directory set to $subpath"
 echo "Is this correct? Type exactly 'y' for yes, anything else for no"
-read $iscorrect
+read iscorrect
 
 if [[ "$iscorrect" != "y" ]]; then
     echo "abort."
@@ -71,6 +70,7 @@ if [[ ! -f "$tarpath" ]]; then
 fi
 
 cd $subroot
-# Now, move to extraction.
-tar xvzf $tarpath
-
+# INITIALIZE GIT
+mkdir -p "$subpath/.git" #-p initializes parent dir.
+cd "$subpath/.git"
+pwd
