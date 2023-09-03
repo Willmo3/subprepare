@@ -29,7 +29,7 @@ if [[ "$islab" = "lab" ]]; then
     subroot="$rootdir/submit/$username"
 elif [[ "$islab" = "pa" ]]; then
     echo "Prepare repository for pa submission"
-    rootdir="$rootdir/teams/$username"
+    subroot="$rootdir/teams/$username"
 else
     echo "Invalid input: $islab. Specify lab or pa"
     echo $usage
@@ -48,6 +48,19 @@ if [[ -d "$subpath" ]]; then
     exit 1
 fi
 
+# Confirm that the submission details are correct.
+echo "Submission directory set to $subpath"
+echo "Is this correct? Type exactly 'y' for yes, anything else for no"
+read $iscorrect
+
+if [[ "$iscorrect" != "y" ]]; then
+    echo "abort."
+    exit 0
+else
+    echo "Submission directory $subpath confirmed."
+fi
+
+# Validate that the tarball exists
 tarpath=$rootdir/src/$name.tar.gz
 if [[ ! -f "$tarpath" ]]; then
     echo "File not found: $tarpath"
