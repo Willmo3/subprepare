@@ -36,7 +36,6 @@ else
     exit 1 
 fi
 
-subroot=$rootdir/submit/$username
 if [[ ! -d "$subroot" ]]; then
     echo "Submission parent directory $subroot not found."
     exit 1
