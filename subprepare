@@ -41,6 +41,8 @@ if [[ ! -d "$subroot" ]]; then
     exit 1
 fi
 
+# Subpath var exists to ensure no overwrite
+# and to tell user where submission will be placed.
 subpath=$subroot/$name
 if [[ -d "$subpath" ]]; then
     echo "Submission directory $subpath already exists!"
