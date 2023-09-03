@@ -7,9 +7,7 @@ class=cs361
 semester=f23
 prof=kirkpams
 
-# Validate args
-# EXPECTED: subprepare (whether lab or pa) (name)
-
+# VALIDATION
 islab=$1 # whether is lab or is pa. This determines where the project will be placed.
 name=$2 # name of assignment, first arg
 if [[ "$#" -ne 2 ]]; then
@@ -74,3 +72,5 @@ cd $subroot
 mkdir -p "$subpath/.git" #-p initializes parent dir.
 cd "$subpath/.git"
 git init --bare
+
+# INITIALIZE WORKING DIR
