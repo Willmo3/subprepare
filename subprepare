@@ -73,4 +73,4 @@ cd $subroot
 # INITIALIZE GIT
 mkdir -p "$subpath/.git" #-p initializes parent dir.
 cd "$subpath/.git"
-pwd
+git init --bare
