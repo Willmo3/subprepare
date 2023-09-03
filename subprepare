@@ -67,8 +67,8 @@ if [[ ! -f "$tarpath" ]]; then
     exit 1
 fi
 
-cd $subroot
 # INITIALIZE GIT
+cd $subroot
 mkdir -p "$subpath/.git" #-p initializes parent dir.
 cd "$subpath/.git"
 git init --bare
