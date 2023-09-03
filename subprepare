@@ -12,7 +12,6 @@ prof=kirkpams
 
 islab=$1 # whether is lab or is pa. This determines where the project will be placed.
 name=$2 # name of assignment, first arg
-
 if [[ "$#" -ne 2 ]]; then
     echo $usage
     exit 1
