@@ -33,7 +33,7 @@ if [[ ! -d $workroot ]]; then
 fi
 
 workdir=$workroot/$name
-if [[ -d $workdir ]]; then
+if [[ -d $workdir ]]; then # Don't do anything if project files already found.
     echo "Project files already found in $workdir!"
     exit 1
 fi
@@ -58,7 +58,7 @@ if [[ ! -d "$subroot" ]]; then
     exit 1
 fi
 
-# Subpath used to ensure no overwrite, initialize bare repo.
+# Subpath used to ensure no overwrite.
 subpath=$subroot/$name
 if [[ -d "$subpath" ]]; then
     echo "Submission directory $subpath already exists!"
@@ -69,9 +69,9 @@ fi
 # Confirm that the submission details are correct.
 echo "Submission directory set to $subpath"
 echo "Is this correct? Type exactly 'y' for yes, anything else for no"
-read iscorrect
+read correct
 
-if [[ "$iscorrect" != "y" ]]; then
+if [[ "$correct" != "y" ]]; then
     echo "abort."
     exit 0
 else
