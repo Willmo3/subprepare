@@ -8,8 +8,8 @@ semester=f23
 prof=kirkpams
 
 # PUT YOUR WORKING DIRECTORY HERE
-# This is where your submissions will be stored.
-workdir="/cs/home/stu/$username/classes/361/"
+# This is where your submissions will be stored downsteam. 
+workdir="/cs/home/stu/$username/classes/361/subs/"
 
 # VALIDATION
 # Validate args
@@ -32,6 +32,8 @@ if [[ ! -d $workdir ]]; then
     exit 1
 fi
 
+# Root directory for submission, different based on lab/pa.
+# Pay careful attention to this!
 subroot=""
 if [[ "$islab" = "lab" ]]; then
     echo "Preparing repository for lab submission"
@@ -87,3 +89,5 @@ git init --bare
 # INITIALIZE WORKING DIR
 cd $workdir
 git clone $subpath
+cd $name    # name of assignment should be submission name
+pwd
