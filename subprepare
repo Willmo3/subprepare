@@ -38,6 +38,13 @@ if [[ -d $workdir ]]; then # Don't do anything if project files already found.
     exit 1
 fi
 
+tarpath=$rootdir/src/$name.tar.gz
+if [[ ! -f "$tarpath" ]]; then
+    echo "Source archive not found: $tarpath"
+    echo $usage
+    exit 1
+fi
+
 # Root directory for submission, different based on lab/pa.
 # Pay careful attention to this!
 subroot=""
@@ -81,14 +88,6 @@ fi
 if [[ -d $subpath ]]; then
     echo "Submission directory $subpath already exists. Will not overwrite."
     echo "abort."
-    exit 1
-fi
-
-# Validate that the tarball exists
-tarpath=$rootdir/src/$name.tar.gz
-if [[ ! -f "$tarpath" ]]; then
-    echo "Source archive not found: $tarpath"
-    echo $usage
     exit 1
 fi
 
