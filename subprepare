@@ -22,7 +22,6 @@ fi
 
 # Validate files
 rootdir=/cs/students/$class/$semester/$prof
-
 if [[ ! -d $rootdir ]]; then
     echo "Content root directory not found: $rootdir"
     exit 1
