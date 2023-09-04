@@ -9,7 +9,7 @@ prof=kirkpams
 
 # PUT YOUR WORKING DIRECTORY HERE
 # This is where your submissions will be stored downsteam. 
-workdir="/cs/home/stu/$username/classes/361/subs/"
+workroot="/cs/home/stu/$username/classes/361/subs"
 
 # VALIDATION
 # Validate args
@@ -27,8 +27,14 @@ if [[ ! -d $rootdir ]]; then
     exit 1
 fi
 
-if [[ ! -d $workdir ]]; then
-    echo "Root working directory $workdir not found!"
+if [[ ! -d $workroot ]]; then
+    echo "Root working directory $workroot not found!"
+    exit 1
+fi
+
+workdir=$workroot/$name
+if [[ -d $workdir ]]; then
+    echo "Project files already found in $workdir!"
     exit 1
 fi
 
@@ -72,6 +78,12 @@ else
     echo "Submission directory $subpath confirmed."
 fi
 
+if [[ -d $subpath ]]; then
+    echo "Submission directory $subpath already exists. Will not overwrite."
+    echo "abort."
+    exit 1
+fi
+
 # Validate that the tarball exists
 tarpath=$rootdir/src/$name.tar.gz
 if [[ ! -f "$tarpath" ]]; then
@@ -87,7 +99,7 @@ cd "$subpath/.git"
 git init --bare
 
 # INITIALIZE WORKING DIR
-cd $workdir
-git clone $subpath
-cd $name    # name of assignment should be submission name
+git clone $subpath $workdir
+cd $workdir    # name of assignment should be submission name
+tar -xzvf $tarpath --strip-components=1
 pwd
