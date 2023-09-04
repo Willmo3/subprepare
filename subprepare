@@ -85,4 +85,5 @@ cd "$subpath/.git"
 git init --bare
 
 # INITIALIZE WORKING DIR
-
+cd $workdir
+git clone $subpath
