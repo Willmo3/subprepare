@@ -7,7 +7,12 @@ class=cs361
 semester=f23
 prof=kirkpams
 
+# PUT YOUR WORKING DIRECTORY HERE
+# This is where your submissions will be stored.
+workdir="/cs/home/stu/$username/classes/361/"
+
 # VALIDATION
+# Validate args
 islab=$1 # whether is lab or is pa. This determines where the project will be placed.
 name=$2 # name of assignment, first arg
 if [[ "$#" -ne 2 ]]; then
@@ -15,9 +20,16 @@ if [[ "$#" -ne 2 ]]; then
     exit 1
 fi
 
+# Validate files
 rootdir=/cs/students/$class/$semester/$prof
+
 if [[ ! -d $rootdir ]]; then
     echo "Content root directory not found: $rootdir"
+    exit 1
+fi
+
+if [[ ! -d $workdir ]]; then
+    echo "Root working directory $workdir not found!"
     exit 1
 fi
 
@@ -74,3 +86,4 @@ cd "$subpath/.git"
 git init --bare
 
 # INITIALIZE WORKING DIR
+
